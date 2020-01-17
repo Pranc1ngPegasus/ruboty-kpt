@@ -4,11 +4,11 @@ Gem::Specification.new do |spec|
   spec.name          = "ruboty-kpt"
   spec.version       = Ruboty::Kpt::VERSION
   spec.authors       = ["Fukaya Temma"]
-  spec.email         = ["tenma.fukaya@kyash.co"]
+  spec.email         = ["ride.or.die.2215+github@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = 'Ruboty plugin for encourage KPT retrospect'
+  spec.description   = 'Ruboty plugin for encourage KPT retrospect'
+  spec.homepage      = 'https://github.com/Pegasus204/ruboty-kpt'
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
