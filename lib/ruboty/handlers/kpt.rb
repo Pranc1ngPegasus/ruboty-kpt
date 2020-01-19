@@ -22,6 +22,12 @@ module Ruboty
         all: true
       )
 
+      on(
+        %r{summary},
+        name: 'summary',
+        description: 'List the KPTs',
+      )
+
       def keep(message)
         message.reply(unexpected_empty_message) unless message[:retrospective]
 
@@ -38,6 +44,10 @@ module Ruboty
         message.reply(unexpected_empty_message) unless message[:retrospective]
 
         Ruboty::Kpt::Actions::Record.new(message, 'try').call
+      end
+
+      def summary(message)
+        Ruboty::Kpt::Actions::Summary.new(message).call
       end
 
       private

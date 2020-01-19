@@ -30,7 +30,7 @@ module Ruboty
 
         def data
           {
-            message: message[:retrospective],
+            post: message[:retrospective],
             from: message.from_name,
           }
         end
