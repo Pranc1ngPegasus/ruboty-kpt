@@ -1,12 +1,11 @@
 module Ruboty
   module Kpt
     module Actions
-      class Record
+      class Record < Ruboty::Actions::Base
         def initialize(message, type = nil)
-          return unless message
-          return unless type
+          super(message)
 
-          @message = message
+          return unless type
           @type = type
         end
 
@@ -14,7 +13,7 @@ module Ruboty
           message.reply(type + 'を記録しました >> ' + message[:retrospective])
         end
 
-        attr_reader :message, :type
+        attr_reader :type
       end
     end
   end
