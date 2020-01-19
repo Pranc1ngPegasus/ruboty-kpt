@@ -10,10 +10,30 @@ module Ruboty
         end
 
         def call
-          message.reply(type + 'を記録しました >> ' + message[:retrospective])
+          result = add_to_brain
+          message.reply(type + 'を記録しました >> ' + result.to_s)
         end
 
         attr_reader :type
+
+        private
+
+        def add_to_brain
+          brain.data[type] ||= []
+          brain.data[type].append(data)
+          data
+        end
+
+        def brain
+          message.robot.brain
+        end
+
+        def data
+          {
+            message: message[:retrospective],
+            from: message.from_name,
+          }
+        end
       end
     end
   end
