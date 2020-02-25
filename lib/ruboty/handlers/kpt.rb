@@ -23,7 +23,7 @@ module Ruboty
       )
 
       on(
-        %r{summary},
+        %r{summary (?<start_date>.+) (?<end_date>.+)},
         name: 'summary',
         description: 'List the KPTs',
       )
