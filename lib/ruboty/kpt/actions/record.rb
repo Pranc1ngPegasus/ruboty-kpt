@@ -1,3 +1,5 @@
+require 'date'
+
 module Ruboty
   module Kpt
     module Actions
@@ -31,6 +33,7 @@ module Ruboty
         def data
           {
             post: message[:retrospective],
+            inserted_at: DateTime.now.to_s,
             from: message.from_name,
           }
         end

@@ -1,3 +1,5 @@
+require 'date'
+
 module Ruboty
   module Kpt
     module Actions
@@ -16,7 +18,10 @@ module Ruboty
           define_method("#{type}_text") do
             return "" unless send("#{type}_data")
 
-            build_text(send("#{type}_data"))
+            target = send("#{type}_data")
+
+            filtered = filter_by_date(target)
+            build_text(filtered)
           end
         end
 
@@ -33,6 +38,19 @@ module Ruboty
             "# Try",
             try_text,
           ].join("\n")
+        end
+
+        def filter_by_date(target)
+          date_range = Range.new(
+            DateTime.parse(message[:start_date]).new_offset,
+            DateTime.parse(message[:end_date]).new_offset + 1,
+          )
+
+          target.find_all do |elm|
+            date_range.cover?(
+              DateTime.parse(elm[:inserted_at]).new_offset
+            )
+          end
         end
 
         def build_text(posts)
