@@ -12,6 +12,7 @@ module Ruboty
         end
 
         def call
+          puts message.inspect
           result = add_to_brain
           message.reply(type + 'を記録しました >> ' + result.to_s, reply_options)
         end
@@ -40,7 +41,7 @@ module Ruboty
 
         def reply_options
           {
-            thread_ts: message[:thread_ts]
+            thread_ts: message[:ts]
           }
         end
       end
