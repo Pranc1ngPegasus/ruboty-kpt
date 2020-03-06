@@ -76,7 +76,7 @@ module Ruboty
 
         def reply_options
           {
-            thread_ts: message[:original][:thread_ts]
+            thread_ts: message[:thread_ts]
           }
         end
       end
