@@ -13,7 +13,7 @@ module Ruboty
 
         def call
           result = add_to_brain
-          message.reply(type + 'を記録しました >> ' + result.to_s)
+          message.reply(type + 'を記録しました >> ' + result.to_s, reply_options)
         end
 
         attr_reader :type
@@ -35,6 +35,12 @@ module Ruboty
             post: message[:retrospective],
             inserted_at: DateTime.now.to_s,
             from: message.from_name,
+          }
+        end
+
+        def reply_options
+          {
+            thread_ts: message[:original][:thread_ts]
           }
         end
       end

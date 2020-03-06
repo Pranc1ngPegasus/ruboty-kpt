@@ -5,7 +5,7 @@ module Ruboty
     module Actions
       class Summary < Ruboty::Actions::Base
         def call
-          message.reply(response)
+          message.reply(response, reply_options)
         end
 
         private
@@ -72,6 +72,12 @@ module Ruboty
 
         def brain
           message.robot.brain
+        end
+
+        def reply_options
+          {
+            thread_ts: message[:original][:thread_ts]
+          }
         end
       end
     end
